@@ -1,0 +1,32 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+
+<h1>Histórico de Vacinas</h1>
+
+{% if lista_vacinas %}
+    <table>
+        <thead>
+            <tr>
+                <th>Pet</th>
+                <th>Vacina</th>
+                <th>Data Aplicação</th>
+                <th>Próxima Dose</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vacina in lista_vacinas %}
+            <tr>
+                <td>{{ vacina.pet.nome }}</td>
+                <td>{{ vacina.nome_vacina }}</td>
+                <td>{{ vacina.data_aplicacao|date:"d/m/Y" }}</td>
+                <td>{{ vacina.proxima_dose|date:"d/m/Y" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhuma vacina registrada.</p>
+{% endif %}
+
+{% endblock %}

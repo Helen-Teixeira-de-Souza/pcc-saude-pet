@@ -1,0 +1,19 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+    <h1>Lista de Pets</h1>
+
+    {% if lista_pets %}
+        <ul>
+        {% for pet in lista_pets %}
+            <li>
+                <a href="{% url 'polls:detalhes_pet' pet.id %}">{{ pet.nome }}</a> 
+                - {{ pet.especie }} 
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum pet cadastrado.</p>
+    {% endif %}
+    
+{% endblock %}

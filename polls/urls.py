@@ -1,9 +1,12 @@
 from django.urls import path
 from . import views
 
+app_name = 'polls'
+
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.lista_pets, name="index"), 
     path('meus-pets/', views.lista_pets, name='pagina_inicial'),
+    path('detalhes-pet/<int:pet_id>/', views.detalhes_pet, name='detalhes_pet'),
     path('vacinas/', views.historico_vacinas, name='pagina_vacinas'),
     path('consultas/', views.registro_consultas, name='pagina_consultas'),
 ]

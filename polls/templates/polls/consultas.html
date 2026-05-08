@@ -1,0 +1,20 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+    <h1>Consultas</h1>
+
+    {% if lista_consultas %}
+        <ul>
+        {% for consulta in lista_consultas %}
+            <li>
+                <strong>Data:</strong> {{ consulta.data }} | 
+                <strong>Pet:</strong> {{ consulta.pet.nome }} | 
+                <strong>Motivo:</strong> {{ consulta.motivo }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhuma consulta registrada.</p>
+    {% endif %}
+
+{% endblock %}

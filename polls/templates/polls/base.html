@@ -1,0 +1,25 @@
+{% load static %} <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Saúde Pet{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'polls/css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'polls:pagina_inicial' %}">Início</a>
+        <a href="{% url 'polls:pagina_vacinas' %}">Vacinas</a>
+        <a href="{% url 'polls:pagina_consultas' %}">Consultas</a>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>Sistema de Saúde Pet</p>
+    </footer>
+</body>
+</html>

@@ -1,14 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+from .models import Consulta, Pet, Vacina
 
 def lista_pets(request):
-    return HttpResponse("<h1>Meus Pets</h1><p>Aqui aparece a lista de todos os seus animais registrados.</p>")
+    todos_os_pets = Pet.objects.all()
+    context = {'lista_pets': todos_os_pets}
+    return render(request, 'polls/lista_pets.html', context)
+
+def detalhes_pet(request, pet_id):
+    pet = Pet.objects.get(pk=pet_id)
+    context = {'pet': pet}
+    return render(request, 'polls/detalhes_pet.html', context)
 
 def historico_vacinas(request):
-    return HttpResponse("<h1>Histórico de Vacinas</h1><p>Aqui registra as vacinas.</p>")
+    todas_as_vacinas = Vacina.objects.all().select_related('pet')
+    context = {'lista_vacinas': todas_as_vacinas}
+    return render(request, 'polls/vacinas.html', context)
 
 def registro_consultas(request):
-    return HttpResponse("<h1>Registro de Consultas</h1><p>Aqui registra consultas.</p>")
+    todas_as_consultas = Consulta.objects.all().select_related('pet')
+    context = {'lista_consultas': todas_as_consultas}
+    return render(request, 'polls/consultas.html', context)

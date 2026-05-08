@@ -19,3 +19,13 @@ class Vacina(models.Model):
 
     def __str__(self):
         return f"{self.nome_vacina} - {self.pet.nome}"
+    
+class Consulta(models.Model):
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+    data_consulta = models.DateField()
+    motivo = models.CharField(max_length=255)
+    diagnostico = models.TextField(blank=True)
+    prescricao = models.TextField(blank=True)
+    
+    def __str__(self):
+        return f"Consulta {self.pet.nome} - {self.data_consulta}"
