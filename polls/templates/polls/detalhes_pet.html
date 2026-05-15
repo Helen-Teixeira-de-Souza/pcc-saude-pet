@@ -1,1 +1,21 @@
-# exibe as informações sobre um pet específico
+{% extends 'polls/base.html' %}
+
+{% block title %}Detalhes do Pet{% endblock %}
+
+{% block content %}
+    <h1>Detalhes do Pet</h1>
+
+    <div style="border: 1px solid #ccc; padding: 16px; border-radius: 8px; max-width: 600px;">
+        <p><strong>Nome:</strong> {{ pet.nome }}</p>
+        <p><strong>Espécie:</strong> {{ pet.especie }}</p>
+        <p><strong>Raça:</strong> {{ pet.raca }}</p>
+        <p><strong>Peso atual:</strong> {{ pet.peso_atual }} kg</p>
+        <p><strong>Data de nascimento:</strong> {{ pet.data_nascimento }}</p>
+    </div>
+
+    <p style="margin-top: 20px;">
+        <a href="{% url 'polls:editar_pet' pet.pk %}" class="btn btn-warning">Editar pet</a>
+        <a href="{% url 'polls:deletar_pet' pet.pk %}" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Excluir pet</a>
+        <a href="{% url 'polls:pagina_inicial' %}" class="btn btn-secondary">Voltar à lista</a>
+    </p>
+{% endblock %}

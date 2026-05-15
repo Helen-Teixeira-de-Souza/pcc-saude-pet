@@ -31,6 +31,7 @@ table {
     border-collapse: collapse;
     border-radius: 8px;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 th, td {
