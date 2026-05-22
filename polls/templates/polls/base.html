@@ -1,16 +1,26 @@
-{% load static %} <!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>{% block title %}Saúde Pet{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'polls/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/assets/css/style.css' %}">
 </head>
 <body>
-    <nav>
-        <a href="{% url 'polls:pagina_inicial' %}">Início</a>
-        <a href="{% url 'polls:pagina_vacinas' %}">Vacinas</a>
-        <a href="{% url 'polls:pagina_consultas' %}">Consultas</a>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="{% url 'polls:home' %}">🐾 Saúde Pet</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="{% url 'polls:home' %}">Início</a>
+                <a class="nav-link" href="{% url 'polls:pagina_vacinas' %}">Vacinas</a>
+                <a class="nav-link" href="{% url 'polls:pagina_consultas' %}">Consultas</a>
+            </div>
+        </div>
     </nav>
 
     <main>
@@ -18,9 +28,14 @@
         {% endblock %}
     </main>
 
-    <footer>
-        <hr>
-        <p>Sistema de Saúde Pet</p>
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">Sistema de Saúde Pet</p>
+        </div>
     </footer>
+
+    <script src="{% static 'polls/assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'polls/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'polls/assets/js/main.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,63 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title %}Painel - Caderneta de Saúde Pet{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="fw-bold text-dark">Caderneta de Saúde Pet</h1>
+            <p class="text-muted">Bem-vindo de volta! Organise aqui as informações essenciais do seu pet.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-circle text-primary me-3">
+                            <i class="fas fa-syringe fa-2x"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-0">Vacinas</h4>
+                    </div>
+                    <p class="card-text text-muted flex-grow-1">Registre as doses aplicadas, controle datas e visualize o histórico completo de vacinação do seu pet.</p>
+                    <div class="d-grid gap-2 d-md-block mt-3">
+                        <a href="{% url 'polls:pagina_vacinas' %}" class="btn btn-primary px-4">Ver Carteira</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-success bg-opacity-10 p-3 rounded-circle text-success me-3">
+                            <i class="fas fa-notes-medical fa-2x"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-0">Consultas & Histórico</h4>
+                    </div>
+                    <p class="card-text text-muted flex-grow-1">Anote os dados das consultas médicas, diagnósticos, recomendações do veterinário e retornos.</p>
+                    <div class="d-grid gap-2 d-md-block mt-3">
+                        <a href="{% url 'polls:pagina_consultas' %}" class="btn btn-success text-white px-4">Ver Consultas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col">
+            <div class="bg-light p-4 rounded shadow-sm d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                    <h5 class="fw-bold mb-1">Precisa registrar um novo animal ou evento?</h5>
+                    <p class="text-muted mb-0 small">Mantenha os dados sempre atualizados para o caso de emergências.</p>
+                </div>
+                <a href="#" class="btn btn-outline-dark fw-bold">Novo Registro</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

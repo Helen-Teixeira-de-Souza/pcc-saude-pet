@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900|Roboto:100,300,400,500&display=swap");
+
+:root {
+    --hunter-green: #386641;
+    --sage-green: #6a994e;
+    --yellow-green: #a7c957;
+    --champagne-mist: #f2e8cf;
+    --blushed-brick: #bc4749;
+}
+
+/* Configurações Globais do Template */
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    background-color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Muli", sans-serif;
+    color: var(--hunter-green);
+    margin-top: 0px;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    color: #506172;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+/* Customização dos Elementos do Site */
+.navbar, .header-sticky {
+    background-color: var(--hunter-green) !important;
+}
+
+.navbar .nav-link, .main-menu ul li a {
+    color: var(--champagne-mist) !important;
+}
+
+.navbar .nav-link:hover, .main-menu ul li:hover > a {
+    color: var(--yellow-green) !important;
+}
+
+/* Botões do site */
+.btn, .boxed-btn, .header-btn {
+    background: var(--sage-green) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--sage-green) !important;
+}
+
+.btn:hover, .boxed-btn:hover {
+    background: var(--hunter-green) !important;
+    border: 1px solid var(--hunter-green) !important;
+}
+
+/* Classes utilitárias de cor de fundo */
+.white-bg { background: #ffffff; }
+.gray-bg { background: #f7f7fd; }
+.theme-bg { background: var(--hunter-green); }
+.brand-bg { background: var(--champagne-mist); }
+
+/* Links de tabelas e interações */
+.hover-link:hover {
+    color: var(--sage-green) !important;
+    text-decoration: underline !important;
+}
