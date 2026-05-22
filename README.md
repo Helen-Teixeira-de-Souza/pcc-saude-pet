@@ -5,4 +5,4 @@ O objetivo é permitir que tutores acompanhem o histórico clínico de seus pets
 [Atividade de PSW também]
 
 # Próximos Passos
-- Implementação do CRUD completo (Cadastro, Edição e Exclusão)
+- Implementação do CRUD completo de Vacianas e Consultas
