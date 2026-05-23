@@ -1,32 +1,40 @@
 {% extends 'polls/base.html' %}
 
 {% block content %}
+<div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-4 text-secondary">💉 Histórico de Vacinas</h1>
 
-<h1>Histórico de Vacinas</h1>
-
-{% if lista_vacinas %}
-    <table>
-        <thead>
-            <tr>
-                <th>Pet</th>
-                <th>Vacina</th>
-                <th>Data Aplicação</th>
-                <th>Próxima Dose</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for vacina in lista_vacinas %}
-            <tr>
-                <td>{{ vacina.pet.nome }}</td>
-                <td>{{ vacina.nome_vacina }}</td>
-                <td>{{ vacina.data_aplicacao|date:"d/m/Y" }}</td>
-                <td>{{ vacina.proxima_dose|date:"d/m/Y" }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <p>Nenhuma vacina registrada.</p>
-{% endif %}
-
+        {% if lista_vacinas %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Pet</th>
+                        <th>Vacina</th>
+                        <th>Data Aplicação</th>
+                        <th>Próxima Dose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vacina in lista_vacinas %}
+                    <tr>
+                        <td class="fw-semibold">{{ vacina.pet.nome }}</td>
+                        <td><span class="badge bg-secondary-subtle text-secondary-emphasis">{{ vacina.nome_vacina }}</span></td>
+                        <td>{{ vacina.data_aplicacao|date:"d/m/Y" }}</td>
+                        <td>
+                            <span class="text-danger fw-semibold">{{ vacina.proxima_dose|date:"d/m/Y" }}</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info mb-0" role="alert">
+            <i class="bi bi-info-circle me-2"></i> Nenhuma vacina registrada.
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

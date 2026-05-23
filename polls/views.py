@@ -41,6 +41,3 @@ def registro_consultas(request):
     todas_as_consultas = Consulta.objects.all().select_related('pet')
     context = {'lista_consultas': todas_as_consultas}
     return render(request, 'polls/consultas.html', context)
-
-def home(request):
-    return render(request, 'polls/home.html')

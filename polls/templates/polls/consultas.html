@@ -1,20 +1,27 @@
 {% extends 'polls/base.html' %}
 
 {% block content %}
-    <h1>Consultas</h1>
+<div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-4 text-secondary">🗓️ Histórico de Consultas</h1>
 
-    {% if lista_consultas %}
-        <ul>
-        {% for consulta in lista_consultas %}
-            <li>
-                <strong>Data:</strong> {{ consulta.data }} | 
-                <strong>Pet:</strong> {{ consulta.pet.nome }} | 
-                <strong>Motivo:</strong> {{ consulta.motivo }}
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>Nenhuma consulta registrada.</p>
-    {% endif %}
-
+        {% if lista_consultas %}
+        <div class="list-group list-group-flush border-top">
+            {% for consulta in lista_consultas %}
+            <div class="list-group-item py-3">
+                <div class="d-flex w-100 justify-content-between mb-1">
+                    <h5 class="mb-1 text-primary">🐾 {{ consulta.pet.nome }}</h5>
+                    <small class="text-muted fw-semibold"><i class="bi bi-calendar3 me-1"></i> {{ consulta.data }}</small>
+                </div>
+                <p class="mb-1 text-secondary"><strong>Motivo:</strong> {{ consulta.motivo }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info mb-0" role="alert">
+            <i class="bi bi-info-circle me-2"></i> Nenhuma consulta registrada.
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

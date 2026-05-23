@@ -3,19 +3,44 @@
 {% block title %}Detalhes do Pet{% endblock %}
 
 {% block content %}
-    <h1>Detalhes do Pet</h1>
+<div class="card shadow-sm border-0" style="max-width: 700px;">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-4 text-secondary">🪪 Detalhes do Pet</h1>
 
-    <div style="border: 1px solid #ccc; padding: 16px; border-radius: 8px; max-width: 600px;">
-        <p><strong>Nome:</strong> {{ pet.nome }}</p>
-        <p><strong>Espécie:</strong> {{ pet.especie }}</p>
-        <p><strong>Raça:</strong> {{ pet.raca }}</p>
-        <p><strong>Peso atual:</strong> {{ pet.peso_atual }} kg</p>
-        <p><strong>Data de nascimento:</strong> {{ pet.data_nascimento }}</p>
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <span class="text-muted">Nome:</span>
+                <span class="fw-bold text-body-emphasis">{{ pet.nome }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <span class="text-muted">Espécie:</span>
+                <span class="badge bg-primary-subtle text-primary-emphasis">{{ pet.especie }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <span class="text-muted">Raça:</span>
+                <span class="fw-semibold">{{ pet.raca }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <span class="text-muted">Peso atual:</span>
+                <span class="fw-semibold">{{ pet.peso_atual }} kg</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <span class="text-muted">Data de nascimento:</span>
+                <span class="fw-semibold">{{ pet.data_nascimento }}</span>
+            </li>
+        </ul>
+
+        <div class="d-flex gap-2">
+            <a href="{% url 'polls:editar_pet' pet.pk %}" class="btn btn-warning text-white">
+                <i class="bi bi-pencil-square me-1"></i> Editar pet
+            </a>
+            <a href="{% url 'polls:deletar_pet' pet.pk %}" class="btn btn-danger" onclick="return confirm('Tem certeza?')">
+                <i class="bi bi-trash me-1"></i> Excluir pet
+            </a>
+            <a href="{% url 'polls:lista_pets' %}" class="btn btn-secondary ms-auto">
+                <i class="bi bi-arrow-left me-1"></i> Voltar à lista
+            </a>
+        </div>
     </div>
-
-    <p style="margin-top: 20px;">
-        <a href="{% url 'polls:editar_pet' pet.pk %}" class="btn btn-warning">Editar pet</a>
-        <a href="{% url 'polls:deletar_pet' pet.pk %}" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Excluir pet</a>
-        <a href="{% url 'polls:pagina_inicial' %}" class="btn btn-secondary">Voltar à lista</a>
-    </p>
+</div>
 {% endblock %}

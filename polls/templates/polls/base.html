@@ -2,40 +2,94 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>{% block title %}Saúde Pet{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'polls/assets/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'polls/assets/css/fontawesome-all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'polls/assets/css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'polls/assets/css/style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Saúde Pet{% endblock %}</title>
+
+  <link rel="stylesheet" href="{% static 'polls/assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'polls/assets/vendors/bootstrap-icons/bootstrap-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'polls/assets/css/style.css' %}">
 </head>
+
 <body>
+  <div class="admin-shell">
+    <div class="sidebar-backdrop" data-sidebar-close></div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="{% url 'polls:home' %}">🐾 Saúde Pet</a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="{% url 'polls:home' %}">Início</a>
-                <a class="nav-link" href="{% url 'polls:pagina_vacinas' %}">Vacinas</a>
-                <a class="nav-link" href="{% url 'polls:pagina_consultas' %}">Consultas</a>
-            </div>
+    <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
+      <div class="sidebar-header">
+        <a class="brand-mark" href="{% url 'polls:lista_pets' %}" aria-label="adminHMD dashboard">
+          <span class="brand-icon"><i class="bi bi-heart-fill text-danger" aria-hidden="true"></i></span>
+          <span class="brand-copy">
+            <span class="brand-title">Saúde Pet</span>
+            <span class="brand-subtitle">Gerenciador</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="nav-link" href="{% url 'polls:lista_pets' %}">
+          <span class="nav-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
+          <span class="nav-text">Início / Pets</span>
+        </a>
+        <a class="nav-link" href="{% url 'polls:pagina_vacinas' %}">
+          <span class="nav-icon"><i class="bi bi-capsule" aria-hidden="true"></i></span>
+          <span class="nav-text">Vacinas</span>
+        </a>
+        <a class="nav-link" href="{% url 'polls:pagina_consultas' %}">
+          <span class="nav-icon"><i class="bi bi-calendar-event" aria-hidden="true"></i></span>
+          <span class="nav-text">Consultas</span>
+        </a>
+      </nav>
+
+      <!-- mostra do usuário logado, tirei porque não tem login ainda
+      <div class="sidebar-user">
+        <img class="avatar-img avatar-md sidebar-user-avatar" src="{% static 'polls/assets/images/avatar/avatar.jpg' %}" alt="Usuario">
+        <strong>Nome do Usuário</strong>
+        <small>Painel de Controle</small>
+      </div>
+       -->
+
+    </aside>
+  
+    <div class="admin-main">
+      <nav class="navbar admin-navbar navbar-expand bg-white">
+        <div class="container-fluid px-3 px-lg-4">
+          <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar" aria-expanded="true" aria-label="Toggle sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <form class="d-none d-md-flex ms-3 flex-grow-1" role="search">
+            <input class="form-control search-input" type="search" placeholder="Buscar pets, vacinas..." aria-label="Search">
+          </form>
+
+          <div class="navbar-actions ms-auto">
+            <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme">
+              <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-    </nav>
+      </nav>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+      <main class="dashboard-content">
+        <div class="container-fluid px-3 px-lg-4 py-4">
+          
+          {% block content %}
+          {% endblock %}
 
-    <footer class="bg-dark text-white text-center py-4 mt-5">
-        <div class="container">
-            <p class="mb-0">Sistema de Saúde Pet</p>
         </div>
-    </footer>
+      </main>
 
-    <script src="{% static 'polls/assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
-    <script src="{% static 'polls/assets/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'polls/assets/js/main.js' %}"></script>
+      <footer class="admin-footer">
+        <div class="container-fluid px-3 px-lg-4">
+          <span>Copyright 2026 • Sistema de Saúde Pet</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="{% static 'polls/assets/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'polls/assets/js/main.js' %}"></script>
 </body>
 </html>

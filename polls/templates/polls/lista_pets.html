@@ -1,41 +1,51 @@
 {% extends 'polls/base.html' %}
 
 {% block content %}
-    <h1>Meus Pets</h1>
+<div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-4 text-secondary">🐾 Meus Pets</h1>
 
-    <p>
-        <a href="{% url 'polls:novo_pet' %}" style="display: inline-block; margin-bottom: 16px; padding: 8px 12px; background: #28a745; color: white; text-decoration: none; border-radius: 4px;">
-            Cadastrar novo pet
-        </a>
-    </p>
+        <div class="mb-4">
+            <a href="{% url 'polls:novo_pet' %}" class="btn btn-success">
+                <i class="bi bi-plus-lg me-1"></i> Cadastrar novo pet
+            </a>
+        </div>
 
-    {% if lista_pets %}
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for pet in lista_pets %}
-                <tr>
-                    <td>
-                        <a href="{% url 'polls:detalhes_pet' pet.id %}">{{ pet.nome }}</a>
-                    </td>
-                    <td>
-                        <a href="{% url 'polls:editar_pet' pet.pk %}">Editar</a>
-                        <a href="{% url 'polls:deletar_pet' pet.pk %}"
-                        onclick="return confirm('Tem certeza?')"
-                        style="color: red; margin-left: 10px;">
-                            Excluir
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>Nenhum pet cadastrado.</p>
-    {% endif %}
+        {% if lista_pets %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Nome</th>
+                        <th class="text-end">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pet in lista_pets %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'polls:detalhes_pet' pet.id %}" class="text-decoration-none fw-semibold">
+                                {{ pet.nome }}
+                            </a>
+                        </td>
+                        <td class="text-end">
+                            <a href="{% url 'polls:editar_pet' pet.pk %}" class="btn btn-sm btn-outline-primary me-2">
+                                <i class="bi bi-pencil"></i> Editar
+                            </a>
+                            <a href="{% url 'polls:deletar_pet' pet.pk %}" onclick="return confirm('Tem certeza?')" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i> Excluir
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info mb-0" role="alert">
+            <i class="bi bi-info-circle me-2"></i> Nenhum pet cadastrado.
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
