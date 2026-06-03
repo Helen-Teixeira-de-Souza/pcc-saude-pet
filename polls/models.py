@@ -24,6 +24,7 @@ class Vacina(models.Model):
     nome_vacina = models.CharField(max_length=200)
     data_aplicacao = models.DateField()
     proxima_dose = models.DateField(null=True, blank=True)
+    veterinario = models.CharField(max_length=100, blank=True, null=True)
     observacoes = models.TextField(blank=True)
 
     def __str__(self):
@@ -46,3 +47,19 @@ class HistoricoPeso(models.Model):
 
     def __str__(self):
         return f"{self.pet.nome} - {self.peso}kg em {self.data_pesagem}"
+
+# mais classes para implementar depois:
+# class Medicamento(models.Model):
+#    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+#    nome_remedio = models.CharField(max_length=100)
+#    dosagem = models.CharField(max_length=50)
+#    data_inicio = models.DateField()
+#    frequencia = models.CharField(max_length=50) 
+#    observacoes = models.TextField(blank=True, null=True)
+
+# class Cirurgia(models.Model):
+#    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+#    tipo_cirurgia = models.CharField(max_length=100) 
+#    data_procedimento = models.DateField()
+#    veterinario_responsavel = models.CharField(max_length=100)
+#    cuidados_pos_operatorios = models.TextField(blank=True, null=True)

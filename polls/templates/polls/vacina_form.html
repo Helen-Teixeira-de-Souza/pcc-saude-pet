@@ -1,0 +1,57 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}Cadastro de Vacina{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm border-0" style="max-width: 650px;">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-4 text-secondary">
+            <i class="bi bi-file-earmark-medical me-2 text-success"></i>Formulário de Vacina
+        </h1>
+        
+        <form method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            
+            {% for field in form %}
+            <div class="mb-3 row align-items-top">
+                <label for="{{ field.id_for_label }}" class="col-sm-3 col-form-label fw-semibold text-secondary text-sm-end pt-1">
+                    {{ field.label }}:
+                </label>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        {% if field.field.widget.input_type == None and field.html_name == 'observacoes' %}
+                            <textarea name="{{ field.html_name }}" 
+                                      id="{{ field.id_for_label }}" 
+                                      class="form-control" 
+                                      rows="3"
+                                      {% if field.field.required %}required{% endif %}>{{ field.value|default_if_none:'' }}</textarea>
+                        {% else %}
+                            <input type="{{ field.field.widget.input_type|default:'text' }}" 
+                                   name="{{ field.html_name }}" 
+                                   id="{{ field.id_for_label }}"
+                                   class="form-control"
+                                   value="{{ field.value|default_if_none:'' }}"
+                                   {% if field.field.required %}required{% endif %}>
+                        {% endif %}
+                    </div>
+                    {% if field.help_text %}
+                    <div class="form-text text-muted small">{{ field.help_text }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            
+            <div class="row mt-4">
+                <div class="col-sm-9 offset-sm-3 d-flex gap-2">
+                    <button type="submit" class="btn btn-success px-4">
+                        <i class="bi bi-check-lg me-1"></i>Salvar
+                    </button>
+                    <a href="{% url 'polls:detalhes_pet' pet.id %}" class="btn btn-outline-secondary px-4">
+                        Cancelar
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
