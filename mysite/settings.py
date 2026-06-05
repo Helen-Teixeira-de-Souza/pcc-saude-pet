@@ -117,3 +117,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'polls' / 'static',]
+
+# Autenticação
+LOGIN_URL = 'polls:login'
+LOGIN_REDIRECT_URL = 'polls:lista_pets'
+LOGOUT_REDIRECT_URL = 'polls:login'
